@@ -22,6 +22,7 @@
 		D8E24901186519880083C0FD /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24900186519880083C0FD /* ItemsViewController.m */; };
 		D8E2490418651C550083C0FD /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E2490318651C550083C0FD /* BNRItem.m */; };
 		D8E249071865D2890083C0FD /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E249061865D2890083C0FD /* BNRItemStore.m */; };
+		D8E24909186655420083C0FD /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D8E24908186655420083C0FD /* background.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D8E2490318651C550083C0FD /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		D8E249051865D2890083C0FD /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		D8E249061865D2890083C0FD /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
+		D8E24908186655420083C0FD /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +126,7 @@
 				D8E2490318651C550083C0FD /* BNRItem.m */,
 				D8E249051865D2890083C0FD /* BNRItemStore.h */,
 				D8E249061865D2890083C0FD /* BNRItemStore.m */,
+				D8E24908186655420083C0FD /* background.png */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
+				D8E24909186655420083C0FD /* background.png in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

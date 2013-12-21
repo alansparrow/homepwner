@@ -13,6 +13,11 @@
 
 @implementation ItemsViewController
 
+- (void)viewDidLoad
+{
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background.png"]];
+}
+
 - (id)init
 {
     // Call the superclass's designated initializer
@@ -59,12 +64,26 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
         BNRItem *p = [[[BNRItemStore sharedStore] allItems]
                       objectAtIndex:[indexPath row]];
         [[cell textLabel] setText:[p description]];
+        [[cell textLabel] setFont:[UIFont systemFontOfSize:20]];
     } else {
         [[cell textLabel] setText:@"No more items!"];
+        [[cell textLabel] setFont:[UIFont systemFontOfSize:15]];
     }
     NSLog(@"Scrolling: %d/%d", [indexPath row], [[[BNRItemStore sharedStore] allItems] count]);
     
     return cell;
 }
+
+- (CGFloat)tableView:(UITableView *)tableView
+heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath row] < [[[BNRItemStore sharedStore] allItems] count])
+        return 60;
+    else
+        return 44;
+    
+}
+
+
 
 @end
