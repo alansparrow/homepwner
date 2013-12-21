@@ -18,7 +18,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 30; i++) {
             // Class method
             [[BNRItemStore sharedStore] createItem];
         }
@@ -34,7 +34,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allItems] count];
+    return [[[BNRItemStore sharedStore] allItems] count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -55,11 +55,14 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
     // Set the text on the cell with the description of the item
     // that is at the nth index of items, where n = row this cell
     // will appear in on the tableview
-    BNRItem *p = [[[BNRItemStore sharedStore] allItems]
-                  objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[p description]];
-    
-    NSLog(@"Scrolling: %d", [indexPath row]);
+    if ([indexPath row] < [[[BNRItemStore sharedStore] allItems] count]) {
+        BNRItem *p = [[[BNRItemStore sharedStore] allItems]
+                      objectAtIndex:[indexPath row]];
+        [[cell textLabel] setText:[p description]];
+    } else {
+        [[cell textLabel] setText:@"No more items!"];
+    }
+    NSLog(@"Scrolling: %d/%d", [indexPath row], [[[BNRItemStore sharedStore] allItems] count]);
     
     return cell;
 }
