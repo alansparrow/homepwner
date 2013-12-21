@@ -18,7 +18,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 20; i++) {
             // Class method
             [[BNRItemStore sharedStore] createItem];
         }
