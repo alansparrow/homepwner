@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface ItemsViewController : UITableViewController
-
+{
+    NSInteger numOfRowInSection0;
+}
 @end

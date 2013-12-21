@@ -24,6 +24,8 @@
 
 - (NSArray *)allItems;
 - (BNRItem *)createItem;
-
+- (NSInteger)countOfAllItemsMoreThan50;
+- (NSInteger)countOfAllRestItems;
+- (void)sortFromHighToLowValue;
 @end
 

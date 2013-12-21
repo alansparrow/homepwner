@@ -18,7 +18,7 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 20; i++) {
             // Class method
             [[BNRItemStore sharedStore] createItem];
         }
@@ -31,10 +31,20 @@
     return [self init];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allItems] count];
+    [[BNRItemStore sharedStore] sortFromHighToLowValue];
+    numOfRowInSection0 = [[BNRItemStore sharedStore] countOfAllItemsMoreThan50];
+    if (section == 0)
+        return numOfRowInSection0;
+    else
+        return [[[BNRItemStore sharedStore] allItems] count] - numOfRowInSection0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -51,17 +61,25 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
                 reuseIdentifier:@"UITableViewCell"];
     }
     
+    if ([indexPath section] == 0) {
+        BNRItem *p = [[[BNRItemStore sharedStore] allItems]
+                      objectAtIndex:[indexPath row]];
+        [[cell textLabel] setText:[p description]];
+    } else {
+        BNRItem *p = [[[BNRItemStore sharedStore] allItems]
+                      objectAtIndex:([indexPath row]+numOfRowInSection0)];
+        [[cell textLabel] setText:[p description]];
+    }
     
-    // Set the text on the cell with the description of the item
-    // that is at the nth index of items, where n = row this cell
-    // will appear in on the tableview
-    BNRItem *p = [[[BNRItemStore sharedStore] allItems]
-                  objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[p description]];
+   
     
-    NSLog(@"Scrolling: %d", [indexPath row]);
+    NSLog(@"Row: %d | Section: %d", [indexPath row], [indexPath section]);
+
     
     return cell;
 }
+
+
+
 
 @end
