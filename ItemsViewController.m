@@ -9,6 +9,7 @@
 #import "ItemsViewController.h"
 #import "BNRItem.h"
 #import "BNRItemStore.h"
+#import "DetailViewController.h"
 
 
 @implementation ItemsViewController
@@ -170,5 +171,25 @@ toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
         return sourceIndexPath;
     } else
         return proposedDestinationIndexPath;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if ([indexPath row] != [[[BNRItemStore sharedStore] allItems] count]) {
+        DetailViewController *detailViewController = [[DetailViewController alloc] init];
+        
+        BNRItem *selectedItem = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
+        // Give detail view controller a pointer to the item object in row
+        [detailViewController setItem:selectedItem];
+        
+        // Push it onto the top of the navigation controller's stack
+        [[self navigationController] pushViewController:detailViewController animated:YES];
+    }
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [[self tableView] reloadData];
 }
 @end
