@@ -31,7 +31,7 @@
 - (NSInteger)tableView:(UITableView *)tableView
 numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allItems] count];
+    return [[[BNRItemStore sharedStore] allItems] count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
@@ -52,9 +52,13 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
     // Set the text on the cell with the description of the item
     // that is at the nth index of items, where n = row this cell
     // will appear in on the tableview
-    BNRItem *p = [[[BNRItemStore sharedStore] allItems]
-                  objectAtIndex:[indexPath row]];
-    [[cell textLabel] setText:[p description]];
+    if ([indexPath row] < [[[BNRItemStore sharedStore] allItems] count]) {
+        BNRItem *p = [[[BNRItemStore sharedStore] allItems]
+                      objectAtIndex:[indexPath row]];
+        [[cell textLabel] setText:[p description]];
+    } else {
+        [[cell textLabel] setText:@"No more items!"];
+    }
     
     NSLog(@"Scrolling: %d", [indexPath row]);
     
@@ -121,17 +125,22 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // If the table view is asking to commit a delete command...
-    if (editingStyle == UITableViewCellEditingStyleDelete)
-    {
-        BNRItemStore *ps = [BNRItemStore sharedStore];
-        NSArray *items = [ps allItems];
-        BNRItem *p = [items objectAtIndex:[indexPath row]];
-        [ps removeItem:p];
+    if ([indexPath row] != [[[BNRItemStore sharedStore] allItems] count]) {
         
-        // We also remove that row from the table view with an animation
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+        NSLog(@"%d/%d", [indexPath row], [[[BNRItemStore sharedStore] allItems] count]-1);
+        
+        // If the table view is asking to commit a delete command...
+        if (editingStyle == UITableViewCellEditingStyleDelete)
+        {
+            BNRItemStore *ps = [BNRItemStore sharedStore];
+            NSArray *items = [ps allItems];
+            BNRItem *p = [items objectAtIndex:[indexPath row]];
+            [ps removeItem:p];
+        
+            // We also remove that row from the table view with an animation
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
+        }
     }
     
 }
@@ -142,6 +151,7 @@ moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath
 {
     [[BNRItemStore sharedStore] moveItemAtIndex:[sourceIndexPath row]
                                         toIndex:[destinationIndexPath row]];
+    NSLog(@"%d -> %d", [sourceIndexPath row], [destinationIndexPath row]);
 }
 
 - (NSString *)tableView:(UITableView *)tableView
@@ -150,4 +160,15 @@ titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
     return @"Remove";
 }
 
+- (NSIndexPath *)tableView:(UITableView *)tableView
+targetIndexPathForMoveFromRowAtIndexPath:(NSIndexPath *)sourceIndexPath
+toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
+{
+    if ([sourceIndexPath row] == [[[BNRItemStore sharedStore] allItems] count]) {
+        return sourceIndexPath;
+    } else if ([proposedDestinationIndexPath row] == [[[BNRItemStore sharedStore] allItems] count]) {
+        return sourceIndexPath;
+    } else
+        return proposedDestinationIndexPath;
+}
 @end
