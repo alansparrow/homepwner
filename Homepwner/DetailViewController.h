@@ -16,10 +16,12 @@
     __weak IBOutlet UITextField *serialNumberField;
     __weak IBOutlet UITextField *valueField;
     __weak IBOutlet UILabel *dateLabel;
+    __weak IBOutlet UIButton *changeDateBtn;
 }
 
 @property (strong, nonatomic) BNRItem *item;
 
 - (IBAction)touchBackground:(id)sender;
+- (IBAction)changeDate:(id)sender;
 
 @end

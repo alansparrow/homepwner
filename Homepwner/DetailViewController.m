@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "BNRItem.h"
+#import "DatePickerViewController.h"
 
 @interface DetailViewController ()
 
@@ -71,6 +72,15 @@
     [nameField resignFirstResponder];
     [serialNumberField resignFirstResponder];
     [valueField resignFirstResponder];
+}
+
+- (IBAction)changeDate:(id)sender {
+    DatePickerViewController *datePickerViewController = [[DatePickerViewController alloc] init];
+    
+    [datePickerViewController setItem:[self item]];
+    
+    [[self navigationController] pushViewController:datePickerViewController
+                                           animated:YES];
 }
 
 @end
