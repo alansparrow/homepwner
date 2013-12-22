@@ -26,5 +26,6 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 - (IBAction)touchBackground:(id)sender;
 - (IBAction)changeDate:(id)sender;
 - (IBAction)takePicture:(id)sender;
+- (IBAction)removeImage:(id)sender;
 
 @end

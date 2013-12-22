@@ -120,6 +120,11 @@
     [self presentViewController:imagePicker animated:YES completion:nil];
 }
 
+- (IBAction)removeImage:(id)sender {
+    [[BNRImageStore sharedStore] deleteImageForKey:[item imageKey]];
+    [imageView setImage:nil];
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
