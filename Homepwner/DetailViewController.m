@@ -84,9 +84,12 @@
 
 - (IBAction)touchBackground:(id)sender
 {
+    /*
     [nameField resignFirstResponder];
     [serialNumberField resignFirstResponder];
     [valueField resignFirstResponder];
+     */
+    [[self view] endEditing:YES];
 }
 
 - (IBAction)changeDate:(id)sender {
@@ -106,10 +109,12 @@
     if ([UIImagePickerController
          isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
+
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }
     
+    [imagePicker setAllowsEditing:YES];
     [imagePicker setDelegate:self];
     
     [self presentViewController:imagePicker animated:YES completion:nil];
@@ -127,7 +132,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     }
     
     // Get picked image from info dictionary
-    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
     // Create a CFUUID object - it knows how to create unique identifier strings
     CFUUIDRef newUniqueID = CFUUIDCreate(kCFAllocatorDefault);
