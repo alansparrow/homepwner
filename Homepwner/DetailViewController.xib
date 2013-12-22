@@ -10,11 +10,11 @@
                 <outlet property="nameField" destination="wn0-q8-d4o" id="PN9-kI-GOI"/>
                 <outlet property="serialNumberField" destination="fUK-DZ-RBw" id="lAV-gg-EkZ"/>
                 <outlet property="valueField" destination="t19-m9-PEX" id="iMi-kU-Oc9"/>
-                <outlet property="view" destination="1" id="3"/>
+                <outlet property="view" destination="1" id="Waw-mV-jW5"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="1">
+        <view contentMode="scaleToFill" id="1" customClass="UIControl">
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -47,7 +47,7 @@
                     <rect key="frame" x="74" y="67" width="226" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="2CW-TY-H1M"/>
                     </connections>
@@ -56,7 +56,7 @@
                     <rect key="frame" x="74" y="105" width="226" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="r78-1m-Yj0"/>
                     </connections>
@@ -65,7 +65,7 @@
                     <rect key="frame" x="73" y="143" width="227" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                    <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="0QT-m3-5ce"/>
                     </connections>
@@ -74,6 +74,9 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <action selector="touchBackground:" destination="-1" eventType="touchDown" id="ZYp-ox-TRh"/>
+            </connections>
         </view>
     </objects>
 </document>
