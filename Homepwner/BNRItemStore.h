@@ -22,6 +22,8 @@
 // Notice that this is a class method and prefixed with a '+' instead of a '-'
 + (BNRItemStore *)sharedStore;
 
+- (void)removeItem:(BNRItem *)p;
+
 - (NSArray *)allItems;
 - (BNRItem *)createItem;
 

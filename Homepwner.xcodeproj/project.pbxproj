@@ -22,6 +22,7 @@
 		D8E24901186519880083C0FD /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E24900186519880083C0FD /* ItemsViewController.m */; };
 		D8E2490418651C550083C0FD /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E2490318651C550083C0FD /* BNRItem.m */; };
 		D8E249071865D2890083C0FD /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D8E249061865D2890083C0FD /* BNRItemStore.m */; };
+		D8E2490B18667B780083C0FD /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8E2490A18667B780083C0FD /* HeaderView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		D8E2490318651C550083C0FD /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItem.m; sourceTree = "<group>"; };
 		D8E249051865D2890083C0FD /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		D8E249061865D2890083C0FD /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
+		D8E2490A18667B780083C0FD /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 		D8E248D61865169A0083C0FD /* Homepwner */ = {
 			isa = PBXGroup;
 			children = (
+				D8E2490A18667B780083C0FD /* HeaderView.xib */,
 				D8E248FF186519880083C0FD /* ItemsViewController.h */,
 				D8E24900186519880083C0FD /* ItemsViewController.m */,
 				D8E248DF1865169A0083C0FD /* HomepwnerAppDelegate.h */,
@@ -235,6 +238,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8E2490B18667B780083C0FD /* HeaderView.xib in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
 			);
@@ -460,6 +464,7 @@
 				D8E248FB1865169B0083C0FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D8E248FC1865169B0083C0FD /* Build configuration list for PBXNativeTarget "HomepwnerTests" */ = {
 			isa = XCConfigurationList;
@@ -468,6 +473,7 @@
 				D8E248FE1865169B0083C0FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
