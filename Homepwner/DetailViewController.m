@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "DatePickerViewController.h"
 #import "BNRImageStore.h"
+#import "CrosshairView.h"
 
 @interface DetailViewController ()
 
@@ -109,7 +110,18 @@
     if ([UIImagePickerController
          isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypeCamera];
-
+        
+        // Add crosshair sign
+        CGRect bounds = [[imagePicker view] bounds];
+        
+        CrosshairView *crosshairView = [[CrosshairView alloc]
+                                        initWithFrame:CGRectMake((bounds.size.width / 2)- 20,
+                                                                 (bounds.size.height / 2) - 20,
+                                                                 40,
+                                                                 40)];
+        [imagePicker setCameraOverlayView:crosshairView];
+        
+        //[imagePicker setCameraOverlayView:;]
     } else {
         [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
     }

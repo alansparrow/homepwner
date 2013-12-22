@@ -12,6 +12,7 @@
 		D881541918675B9B00DC2894 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541718675B9B00DC2894 /* DatePickerViewController.m */; };
 		D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D881541818675B9B00DC2894 /* DatePickerViewController.xib */; };
 		D881541D1867833700DC2894 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541C1867833700DC2894 /* BNRImageStore.m */; };
+		D88154201867A91F00DC2894 /* CrosshairView.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541F1867A91F00DC2894 /* CrosshairView.m */; };
 		D8E248D11865169A0083C0FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D01865169A0083C0FD /* Foundation.framework */; };
 		D8E248D31865169A0083C0FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D21865169A0083C0FD /* CoreGraphics.framework */; };
 		D8E248D51865169A0083C0FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D41865169A0083C0FD /* UIKit.framework */; };
@@ -48,6 +49,8 @@
 		D881541818675B9B00DC2894 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
 		D881541B1867833700DC2894 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
 		D881541C1867833700DC2894 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
+		D881541E1867A91F00DC2894 /* CrosshairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrosshairView.h; sourceTree = "<group>"; };
+		D881541F1867A91F00DC2894 /* CrosshairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrosshairView.m; sourceTree = "<group>"; };
 		D8E248CD1865169A0083C0FD /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E248D01865169A0083C0FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E248D21865169A0083C0FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -145,6 +148,8 @@
 				D8E249061865D2890083C0FD /* BNRItemStore.m */,
 				D881541B1867833700DC2894 /* BNRImageStore.h */,
 				D881541C1867833700DC2894 /* BNRImageStore.m */,
+				D881541E1867A91F00DC2894 /* CrosshairView.h */,
+				D881541F1867A91F00DC2894 /* CrosshairView.m */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -284,6 +289,7 @@
 				D8E2490418651C550083C0FD /* BNRItem.m in Sources */,
 				D881541D1867833700DC2894 /* BNRImageStore.m in Sources */,
 				D8E248E11865169A0083C0FD /* HomepwnerAppDelegate.m in Sources */,
+				D88154201867A91F00DC2894 /* CrosshairView.m in Sources */,
 				D8E248DD1865169A0083C0FD /* main.m in Sources */,
 				D8815414186733CE00DC2894 /* DetailViewController.m in Sources */,
 			);
