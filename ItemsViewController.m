@@ -19,6 +19,21 @@
     // Call the superclass's designated initializer
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        UINavigationItem *n = [self navigationItem];
+        
+        [n setTitle:@"Homepwner"];
+        
+        // Create a new bar button item that will send
+        // addNewItem: to ItemsViewController
+        UIBarButtonItem *bbi = [[UIBarButtonItem alloc]
+                                initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                target:self
+                                action:@selector(addNewItem:)];
+        
+        // Set this bar button item as the right item in the navigationItem
+        [[self navigationItem] setRightBarButtonItem:bbi];
+        
+        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
         
     }
     return self;
@@ -64,46 +79,6 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
     NSLog(@"Scrolling: %d", [indexPath row]);
     
     return cell;
-}
-
-- (UIView *)headerView
-{
-    // If we haven't loaded the headerView yet...
-    if (!headerView) {
-        // Load HeaderView.xib
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self
-                                    options:nil];
-    }
-    
-    return headerView;
-}
-
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return [self headerView];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
-    // The height of the header view should be determined from the height of the
-    // view in the XIB file
-    return [[self headerView] bounds].size.height;
-}
-
-- (IBAction)toggleEditingMode:(id)sender
-{
-    // If we are currently in editing mode...
-    if ([self isEditing]) {
-        // Change text of button to inform user of state
-        [sender setTitle:@"Edit" forState:UIControlStateNormal];
-        // Turn off editing mode
-        [self setEditing:NO animated:YES];
-    } else {
-        // Change text of button to inform user of state
-        [sender setTitle:@"Done" forState:UIControlStateNormal];
-        // Enter editing mode
-        [self setEditing:YES animated:YES];
-    }
 }
 
 - (IBAction)addNewItem:(id)sender
