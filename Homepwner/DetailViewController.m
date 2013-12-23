@@ -197,7 +197,10 @@
         // Create a new popover controller that will display the imagePicker
         imagePickerPopover = [[UIPopoverController alloc]
                               initWithContentViewController:imagePicker];
-        imagePickerPopover.popoverBackgroundViewClass = [CustomPopoverBackgroundView class];
+        
+        // Enable this if you want customized Popover
+        //imagePickerPopover.popoverBackgroundViewClass = [CustomPopoverBackgroundView class];
+        
         [imagePickerPopover setDelegate:self];
         
         // Display the popover controller;

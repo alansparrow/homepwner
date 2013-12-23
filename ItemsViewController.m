@@ -14,6 +14,13 @@
 
 @implementation ItemsViewController
 
+- (void)viewDidLoad
+{
+    // Fix status bar problem with DetailView xib file
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+}
+
 - (id)init
 {
     // Call the superclass's designated initializer
@@ -97,7 +104,10 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
                                              initWithRootViewController:detailViewController];
     
     
-    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    //[navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    [navController setModalPresentationStyle:UIModalPresentationCurrentContext];
+    [self setDefinesPresentationContext:YES];
+    
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     else
