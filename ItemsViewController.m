@@ -104,9 +104,9 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
                                              initWithRootViewController:detailViewController];
     
     
-    //[navController setModalPresentationStyle:UIModalPresentationFormSheet];
-    [navController setModalPresentationStyle:UIModalPresentationCurrentContext];
-    [self setDefinesPresentationContext:YES];
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    //[navController setModalPresentationStyle:UIModalPresentationCurrentContext];
+    //[self setDefinesPresentationContext:YES];
     
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
         [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
