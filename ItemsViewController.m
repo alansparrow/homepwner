@@ -86,15 +86,26 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
     // Create a new BNRItem and add it to the store
     BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
     
-    // Figure out where that item is in the array
-    int lastRow = [[[BNRItemStore sharedStore] allItems] indexOfObject:newItem];
-    NSLog(@"last row: %d", lastRow);
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
+    [detailViewController setItem:newItem];
     
-    NSIndexPath *ip = [NSIndexPath indexPathForRow:lastRow inSection:0];
+    [detailViewController setDismissBlock:^{
+        [[self tableView] reloadData];
+    }];
     
-    // Insert this new row into the table
-    [[self tableView] insertRowsAtIndexPaths:[NSArray arrayWithObject:ip]
-                            withRowAnimation:UITableViewRowAnimationTop];
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:detailViewController];
+    
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    else
+        [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    // Set modal view
+    [self presentViewController:navController
+                       animated:YES completion:nil];
 }
 
 - (void)tableView:(UITableView *)tableView
@@ -151,7 +162,7 @@ toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if ([indexPath row] != [[[BNRItemStore sharedStore] allItems] count]) {
-        DetailViewController *detailViewController = [[DetailViewController alloc] init];
+        DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:NO];
         
         BNRItem *selectedItem = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[indexPath row]];
         // Give detail view controller a pointer to the item object in row
@@ -166,5 +177,23 @@ toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
 {
     [super viewWillAppear:animated];
     [[self tableView] reloadData];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+/*
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)io
+{
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+        return YES;
+    } else {
+        return (io = UIInterfaceOrientationPortrait);
+    }
+}
+ */
 @end

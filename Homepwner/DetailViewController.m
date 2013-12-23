@@ -10,6 +10,7 @@
 #import "BNRItem.h"
 #import "DatePickerViewController.h"
 #import "BNRImageStore.h"
+#import "BNRItemStore.h"
 #import "CrosshairView.h"
 
 @interface DetailViewController ()
@@ -18,12 +19,56 @@
 
 @implementation DetailViewController
 
+@synthesize dismissBlock;
 @synthesize item;
+
+- (id)initForNewItem:(BOOL)isNew
+{
+    self = [super initWithNibName:@"DetailViewController" bundle:nil];
+    
+    if (self) {
+        if (isNew) {
+            UIBarButtonItem *doneItem = [[UIBarButtonItem alloc]
+                                         initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                         target:self
+                                         action:@selector(save:)];
+            [[self navigationItem] setRightBarButtonItem:doneItem];
+            UIBarButtonItem *cancelItem = [[UIBarButtonItem alloc]
+                                           initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+                                           target:self
+                                           action:@selector(cancel:)];
+            [[self navigationItem] setLeftBarButtonItem:cancelItem];
+        }
+    }
+    
+    return self;
+}
+
+- (id)initWithNibName:(NSString *)nibName bundle:(NSBundle *)bundle
+{
+    @throw [NSException exceptionWithName:@"Wrong initializer"
+                                   reason:@"Use initForNewItem:"
+                                 userInfo:nil];
+    return nil;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [[self view] setBackgroundColor:[UIColor groupTableViewBackgroundColor]];
+    
+    UIColor *clr = nil;
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==
+        UIUserInterfaceIdiomPad) {
+        clr = [UIColor colorWithRed:0.875 green:0.88 blue:0.91 alpha:1];
+    } else {
+        clr = [UIColor groupTableViewBackgroundColor];
+    }
+    
+    [[self view] setBackgroundColor:clr];
+    
+    // Fix status bar problem with DetailView xib file
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -55,6 +100,8 @@
         // Clear the imageView
         [imageView setImage:nil];
     }
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -103,6 +150,13 @@
 }
 
 - (IBAction)takePicture:(id)sender {
+    // Prevent crash from clicking Camera while popover is till visible on iPad
+    if ([imagePickerPopover isPopoverVisible]) {
+        // If the popover is already up, get rid of it
+        [imagePickerPopover dismissPopoverAnimated:YES];
+        [self popoverControllerDidDismissPopover:imagePickerPopover];
+        return;
+    }
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
     /* use for Video
@@ -135,7 +189,25 @@
     [imagePicker setAllowsEditing:YES];
     [imagePicker setDelegate:self];
     
-    [self presentViewController:imagePicker animated:YES completion:nil];
+    // Place image picker on the screen
+    // Check for iPad device before instantiating the popover controller
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==
+        UIUserInterfaceIdiomPad) {
+        // Create a new popover controller that will display the imagePicker
+        imagePickerPopover = [[UIPopoverController alloc]
+                              initWithContentViewController:imagePicker];
+        [imagePickerPopover setDelegate:self];
+        
+        // Display the popover controller;
+        // sender is the camera bar button item
+        [imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                   permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                   animated:YES];
+    } else {
+        [self presentViewController:imagePicker
+                           animated:YES   
+                         completion:nil];
+    }
 }
 
 - (IBAction)removeImage:(id)sender {
@@ -143,9 +215,52 @@
     [imageView setImage:nil];
 }
 
+- (IBAction)takeImageFromLibrary:(id)sender {
+    // Prevent crash from clicking Library while popover is till visible on iPad
+    if ([imagePickerPopover isPopoverVisible]) {
+        // If the popover is already up, get rid of it
+        [imagePickerPopover dismissPopoverAnimated:YES];
+        [self popoverControllerDidDismissPopover:imagePickerPopover];
+        return;
+    }
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    
+    
+    // just pick from photo library
+    if ([UIImagePickerController
+         isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
+        [imagePicker setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    } 
+    
+    [imagePicker setAllowsEditing:YES];
+    [imagePicker setDelegate:self];
+    
+    // Place image picker on the screen
+    // Check for iPad device before instantiating the popover controller
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==
+        UIUserInterfaceIdiomPad) {
+        // Create a new popover controller that will display the imagePicker
+        imagePickerPopover = [[UIPopoverController alloc]
+                              initWithContentViewController:imagePicker];
+        [imagePickerPopover setDelegate:self];
+        
+        // Display the popover controller;
+        // sender is the camera bar button item
+        [imagePickerPopover presentPopoverFromBarButtonItem:sender
+                                   permittedArrowDirections:UIPopoverArrowDirectionAny
+                                                   animated:YES];
+    } else {
+        [self presentViewController:imagePicker
+                           animated:YES
+                         completion:nil];
+    }
+
+}
+
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
+    NSLog(@"Go into this");
     NSString *oldKey = [item imageKey];
     
     // Did the item already have an image?
@@ -173,8 +288,45 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     CFRelease(newUniqueID);
     CFRelease(newUniqueIDString);
     
-    // Take image picker off the screen you must call this dismiss method
-    [self dismissViewControllerAnimated:YES completion:nil];
+    // In case lacking of memory, this won't display for iPhone (instead iPhone uses viewWillAppear)
+    [imageView setImage:image];
+    
+    // For iPad
+    if ([[UIDevice currentDevice] userInterfaceIdiom] ==
+        UIUserInterfaceIdiomPad) {
+        [imagePickerPopover dismissPopoverAnimated:YES];
+        [self popoverControllerDidDismissPopover:imagePickerPopover];
+    } else {
+        // Take image picker off the screen you must call this dismiss method
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }
+    
+}
+
+- (NSUInteger)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskAll;
+}
+
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+    NSLog(@"User dismissed popover");
+    imagePickerPopover = nil;
+}
+
+- (void)save:(id)sender
+{
+    [[self presentingViewController] dismissViewControllerAnimated:YES
+                                                        completion:dismissBlock];
+}
+
+- (void)cancel:(id)sender
+{
+    // If the user cancelled, then remove the BNRItem from the store
+    [[BNRItemStore sharedStore] removeItem:item];
+    
+    [[self presentingViewController] dismissViewControllerAnimated:YES
+                                                        completion:dismissBlock];
 }
 
 @end

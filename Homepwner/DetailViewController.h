@@ -11,7 +11,8 @@
 @class BNRItem;
 
 @interface DetailViewController : UIViewController <UITextFieldDelegate,
-UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+UINavigationControllerDelegate, UIImagePickerControllerDelegate,
+UIPopoverControllerDelegate>
 {
     __weak IBOutlet UITextField *nameField;
     __weak IBOutlet UITextField *serialNumberField;
@@ -19,13 +20,17 @@ UINavigationControllerDelegate, UIImagePickerControllerDelegate>
     __weak IBOutlet UILabel *dateLabel;
     __weak IBOutlet UIButton *changeDateBtn;
     __weak IBOutlet UIImageView *imageView;
+    UIPopoverController *imagePickerPopover;
 }
+- (id)initForNewItem:(BOOL)isNew;
 
 @property (strong, nonatomic) BNRItem *item;
+@property (nonatomic, copy) void (^dismissBlock)(void);
 
 - (IBAction)touchBackground:(id)sender;
 - (IBAction)changeDate:(id)sender;
 - (IBAction)takePicture:(id)sender;
 - (IBAction)removeImage:(id)sender;
+- (IBAction)takeImageFromLibrary:(id)sender;
 
 @end
