@@ -105,6 +105,12 @@
 - (IBAction)takePicture:(id)sender {
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     
+    /* use for Video
+    NSArray *availableTypes = [UIImagePickerController
+                               availableMediaTypesForSourceType:UIImagePickerControllerSourceTypeCamera];
+    [imagePicker setMediaTypes:availableTypes];
+     */
+    
     // If our device has a camera, we want to take a picture, otherwise we
     // just pick from photo library
     if ([UIImagePickerController
