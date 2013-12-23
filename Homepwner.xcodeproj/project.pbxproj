@@ -13,6 +13,9 @@
 		D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D881541818675B9B00DC2894 /* DatePickerViewController.xib */; };
 		D881541D1867833700DC2894 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541C1867833700DC2894 /* BNRImageStore.m */; };
 		D88154201867A91F00DC2894 /* CrosshairView.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541F1867A91F00DC2894 /* CrosshairView.m */; };
+		D88154231868DB2E00DC2894 /* CustomPopoverBackgroundView.m in Sources */ = {isa = PBXBuildFile; fileRef = D88154221868DB2E00DC2894 /* CustomPopoverBackgroundView.m */; };
+		D881542A1868E33400DC2894 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D88154281868E33400DC2894 /* arrow.png */; };
+		D881542B1868E33400DC2894 /* border.png in Resources */ = {isa = PBXBuildFile; fileRef = D88154291868E33400DC2894 /* border.png */; };
 		D8E248D11865169A0083C0FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D01865169A0083C0FD /* Foundation.framework */; };
 		D8E248D31865169A0083C0FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D21865169A0083C0FD /* CoreGraphics.framework */; };
 		D8E248D51865169A0083C0FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D41865169A0083C0FD /* UIKit.framework */; };
@@ -51,6 +54,10 @@
 		D881541C1867833700DC2894 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		D881541E1867A91F00DC2894 /* CrosshairView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CrosshairView.h; sourceTree = "<group>"; };
 		D881541F1867A91F00DC2894 /* CrosshairView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CrosshairView.m; sourceTree = "<group>"; };
+		D88154211868DB2E00DC2894 /* CustomPopoverBackgroundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPopoverBackgroundView.h; sourceTree = "<group>"; };
+		D88154221868DB2E00DC2894 /* CustomPopoverBackgroundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPopoverBackgroundView.m; sourceTree = "<group>"; };
+		D88154281868E33400DC2894 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		D88154291868E33400DC2894 /* border.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = border.png; sourceTree = "<group>"; };
 		D8E248CD1865169A0083C0FD /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E248D01865169A0083C0FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E248D21865169A0083C0FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -150,6 +157,10 @@
 				D881541C1867833700DC2894 /* BNRImageStore.m */,
 				D881541E1867A91F00DC2894 /* CrosshairView.h */,
 				D881541F1867A91F00DC2894 /* CrosshairView.m */,
+				D88154211868DB2E00DC2894 /* CustomPopoverBackgroundView.h */,
+				D88154221868DB2E00DC2894 /* CustomPopoverBackgroundView.m */,
+				D88154281868E33400DC2894 /* arrow.png */,
+				D88154291868E33400DC2894 /* border.png */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -262,8 +273,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */,
+				D881542B1868E33400DC2894 /* border.png in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
+				D881542A1868E33400DC2894 /* arrow.png in Resources */,
 				D8815415186733CE00DC2894 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -292,6 +305,7 @@
 				D88154201867A91F00DC2894 /* CrosshairView.m in Sources */,
 				D8E248DD1865169A0083C0FD /* main.m in Sources */,
 				D8815414186733CE00DC2894 /* DetailViewController.m in Sources */,
+				D88154231868DB2E00DC2894 /* CustomPopoverBackgroundView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

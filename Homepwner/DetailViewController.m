@@ -12,6 +12,7 @@
 #import "BNRImageStore.h"
 #import "BNRItemStore.h"
 #import "CrosshairView.h"
+#import "CustomPopoverBackgroundView.h"
 
 @interface DetailViewController ()
 
@@ -196,6 +197,7 @@
         // Create a new popover controller that will display the imagePicker
         imagePickerPopover = [[UIPopoverController alloc]
                               initWithContentViewController:imagePicker];
+        imagePickerPopover.popoverBackgroundViewClass = [CustomPopoverBackgroundView class];
         [imagePickerPopover setDelegate:self];
         
         // Display the popover controller;
