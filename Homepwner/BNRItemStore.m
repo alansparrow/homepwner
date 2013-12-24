@@ -29,7 +29,12 @@
 {
     self = [super init];
     if (self) {
-        allItems = [[NSMutableArray alloc] init];
+        NSString *path = [self itemArchivePath];
+        allItems = [NSKeyedUnarchiver unarchiveObjectWithFile:path];
+        
+        // If the array hadn't been saved previously, create a new empty one
+        if (!allItems)
+            allItems = [[NSMutableArray alloc] init];
     }
     
     return self;
@@ -67,6 +72,28 @@
     
     // Insert p in array at new location
     [allItems insertObject:p atIndex:to];
+}
+
+- (NSString *)itemArchivePath
+{
+    NSArray *documentDirectories =
+        NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                            NSUserDomainMask,
+                                            YES);
+    
+    // Get one and only document directory from that list
+    NSString *documentDirectory = [documentDirectories objectAtIndex:0];
+    
+    NSLog(@"Path: %@", [documentDirectory stringByAppendingPathComponent:@"items.archive"]);
+    return [documentDirectory stringByAppendingPathComponent:@"items.archive"];
+}
+
+- (BOOL)saveChanges
+{
+    // returns success or failure
+    NSString *path = [self itemArchivePath];
+    
+    return [NSKeyedArchiver archiveRootObject:allItems toFile:path];
 }
 
 @end
