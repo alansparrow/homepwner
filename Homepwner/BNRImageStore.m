@@ -30,6 +30,12 @@
     self = [super init];
     if (self) {
         dictionary = [[NSMutableDictionary alloc] init];
+        
+        NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(clearCache:)
+                   name:UIApplicationDidReceiveMemoryWarningNotification
+                 object:nil];
     }
     
     return self;
@@ -42,8 +48,8 @@
     // Create full path for image
     NSString *imagePath = [self imagePathForKey:s];
     
-    // Turn image into JPEG data,
-    NSData *d = UIImageJPEGRepresentation(i, 0.5);
+    // Turn image into JPEG data
+    NSData *d = UIImagePNGRepresentation(i);
     
     // Write it to full path
     [d writeToFile:imagePath atomically:YES];
@@ -89,6 +95,12 @@
     NSString *documentDirectory = [documentDirectories objectAtIndex:0];
     
     return [documentDirectory stringByAppendingPathComponent:key];
+}
+
+- (void)clearCache:(NSNotification *)note
+{
+    NSLog(@"flushing %d images out of the cache", [dictionary count]);
+    [dictionary removeAllObjects];
 }
 
 @end
