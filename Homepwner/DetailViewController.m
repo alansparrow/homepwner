@@ -277,6 +277,8 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
     // Get picked image from info dictionary
     UIImage *image = [info objectForKey:UIImagePickerControllerEditedImage];
     
+    [item setThumbnailDataFromImage:image];
+    
     // Create a CFUUID object - it knows how to create unique identifier strings
     CFUUIDRef newUniqueID = CFUUIDCreate(kCFAllocatorDefault);
     

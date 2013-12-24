@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */; };
+		D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */; };
 		D8815414186733CE00DC2894 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8815412186733CE00DC2894 /* DetailViewController.m */; };
 		D8815415186733CE00DC2894 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8815413186733CE00DC2894 /* DetailViewController.xib */; };
 		D881541918675B9B00DC2894 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541718675B9B00DC2894 /* DatePickerViewController.m */; };
@@ -44,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D87B252A1869CE9200696EB4 /* HomepwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepwnerItemCell.h; sourceTree = "<group>"; };
+		D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepwnerItemCell.m; sourceTree = "<group>"; };
+		D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepwnerItemCell.xib; sourceTree = "<group>"; };
 		D8815411186733CE00DC2894 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D8815412186733CE00DC2894 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		D8815413186733CE00DC2894 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
@@ -161,6 +166,9 @@
 				D88154221868DB2E00DC2894 /* CustomPopoverBackgroundView.m */,
 				D88154281868E33400DC2894 /* arrow.png */,
 				D88154291868E33400DC2894 /* border.png */,
+				D87B252A1869CE9200696EB4 /* HomepwnerItemCell.h */,
+				D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */,
+				D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -273,6 +281,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */,
+				D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */,
 				D881542B1868E33400DC2894 /* border.png in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
@@ -300,6 +309,7 @@
 				D881541918675B9B00DC2894 /* DatePickerViewController.m in Sources */,
 				D8E24901186519880083C0FD /* ItemsViewController.m in Sources */,
 				D8E2490418651C550083C0FD /* BNRItem.m in Sources */,
+				D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */,
 				D881541D1867833700DC2894 /* BNRImageStore.m in Sources */,
 				D8E248E11865169A0083C0FD /* HomepwnerAppDelegate.m in Sources */,
 				D88154201867A91F00DC2894 /* CrosshairView.m in Sources */,
