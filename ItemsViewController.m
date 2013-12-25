@@ -90,8 +90,17 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
         // Configure the cell with the BNRItem
         [[cell nameLabel] setText:[p itemName]];
         [[cell serialNumberLabel] setText:[p serialNumber]];
+        
+        // Color for $
         [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d",
                                      [p valueInDollars]]];
+        if ([p valueInDollars] >= 50) {
+            [[cell valueLabel] setTextColor:[UIColor cyanColor]];
+        } else {
+            [[cell valueLabel] setTextColor:[UIColor redColor]];
+        }
+        
+        
         [[cell thumbnailView] setImage:[p thumbnail]];
     } else {
         UITableViewCell *defaultCell = [tableView
