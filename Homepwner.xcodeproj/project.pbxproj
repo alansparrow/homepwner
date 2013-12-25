@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D832197A186A51B40016D559 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8321978186A51B40016D559 /* ImageViewController.m */; };
+		D832197B186A51B40016D559 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8321979186A51B40016D559 /* ImageViewController.xib */; };
 		D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */; };
 		D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */; };
 		D8815414186733CE00DC2894 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8815412186733CE00DC2894 /* DetailViewController.m */; };
@@ -46,6 +48,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D8321977186A51B40016D559 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
+		D8321978186A51B40016D559 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
+		D8321979186A51B40016D559 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
 		D87B252A1869CE9200696EB4 /* HomepwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepwnerItemCell.h; sourceTree = "<group>"; };
 		D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepwnerItemCell.m; sourceTree = "<group>"; };
 		D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepwnerItemCell.xib; sourceTree = "<group>"; };
@@ -169,6 +174,9 @@
 				D87B252A1869CE9200696EB4 /* HomepwnerItemCell.h */,
 				D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */,
 				D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */,
+				D8321977186A51B40016D559 /* ImageViewController.h */,
+				D8321978186A51B40016D559 /* ImageViewController.m */,
+				D8321979186A51B40016D559 /* ImageViewController.xib */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -282,6 +290,7 @@
 			files = (
 				D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */,
 				D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */,
+				D832197B186A51B40016D559 /* ImageViewController.xib in Resources */,
 				D881542B1868E33400DC2894 /* border.png in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
@@ -311,6 +320,7 @@
 				D8E2490418651C550083C0FD /* BNRItem.m in Sources */,
 				D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */,
 				D881541D1867833700DC2894 /* BNRImageStore.m in Sources */,
+				D832197A186A51B40016D559 /* ImageViewController.m in Sources */,
 				D8E248E11865169A0083C0FD /* HomepwnerAppDelegate.m in Sources */,
 				D88154201867A91F00DC2894 /* CrosshairView.m in Sources */,
 				D8E248DD1865169A0083C0FD /* main.m in Sources */,

@@ -174,8 +174,8 @@
     CGRect projectRect;
     projectRect.size.width = ratio * origImageSize.width;
     projectRect.size.height = ratio * origImageSize.height;
-    projectRect.origin.x = (newRect.size.width - projectRect.size.width) / 2.0;
-    projectRect.origin.y = (newRect.size.height - projectRect.size.height) / 2.0;
+    projectRect.origin.x = 0;//(newRect.size.width - projectRect.size.width) / 2.0;
+    projectRect.origin.y = 0;//(newRect.size.height - projectRect.size.height) / 2.0;
     
     // Draw the image on it
     [image drawInRect:projectRect];
