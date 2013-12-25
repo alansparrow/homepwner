@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D8B471D6186A8A5600E9942E /* SnowParticle.sks in Resources */ = {isa = PBXBuildFile; fileRef = D8B471D4186A8A5600E9942E /* SnowParticle.sks */; };
+		D8B471D7186A8A5600E9942E /* spark.png in Resources */ = {isa = PBXBuildFile; fileRef = D8B471D5186A8A5600E9942E /* spark.png */; };
 		D8E248D11865169A0083C0FD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D01865169A0083C0FD /* Foundation.framework */; };
 		D8E248D31865169A0083C0FD /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D21865169A0083C0FD /* CoreGraphics.framework */; };
 		D8E248D51865169A0083C0FD /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D8E248D41865169A0083C0FD /* UIKit.framework */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D8B471D4186A8A5600E9942E /* SnowParticle.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = SnowParticle.sks; sourceTree = "<group>"; };
+		D8B471D5186A8A5600E9942E /* spark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = spark.png; sourceTree = "<group>"; };
 		D8E248CD1865169A0083C0FD /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D8E248D01865169A0083C0FD /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D8E248D21865169A0083C0FD /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -120,6 +124,8 @@
 			children = (
 				D8E2490A18667B780083C0FD /* HeaderView.xib */,
 				D8E248FF186519880083C0FD /* ItemsViewController.h */,
+				D8B471D4186A8A5600E9942E /* SnowParticle.sks */,
+				D8B471D5186A8A5600E9942E /* spark.png */,
 				D8E24900186519880083C0FD /* ItemsViewController.m */,
 				D8E248DF1865169A0083C0FD /* HomepwnerAppDelegate.h */,
 				D8E248E01865169A0083C0FD /* HomepwnerAppDelegate.m */,
@@ -238,8 +244,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D8B471D7186A8A5600E9942E /* spark.png in Resources */,
 				D8E2490B18667B780083C0FD /* HeaderView.xib in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
+				D8B471D6186A8A5600E9942E /* SnowParticle.sks in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
