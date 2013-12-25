@@ -12,7 +12,7 @@
 
 @interface DetailViewController : UIViewController <UITextFieldDelegate,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-UIPopoverControllerDelegate>
+UIPopoverControllerDelegate, UIScrollViewDelegate>
 {
     __weak IBOutlet UITextField *nameField;
     __weak IBOutlet UITextField *serialNumberField;
@@ -20,6 +20,7 @@ UIPopoverControllerDelegate>
     __weak IBOutlet UILabel *dateLabel;
     __weak IBOutlet UIButton *changeDateBtn;
     __weak IBOutlet UIImageView *imageView;
+    __weak IBOutlet UIScrollView *scrollView;
     UIPopoverController *imagePickerPopover;
 }
 - (id)initForNewItem:(BOOL)isNew;
@@ -27,10 +28,10 @@ UIPopoverControllerDelegate>
 @property (strong, nonatomic) BNRItem *item;
 @property (nonatomic, copy) void (^dismissBlock)(void);
 
-- (IBAction)touchBackground:(id)sender;
 - (IBAction)changeDate:(id)sender;
 - (IBAction)takePicture:(id)sender;
 - (IBAction)removeImage:(id)sender;
 - (IBAction)takeImageFromLibrary:(id)sender;
+- (IBAction)showImage:(id)sender;
 
 @end

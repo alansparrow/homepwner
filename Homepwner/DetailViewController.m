@@ -13,6 +13,7 @@
 #import "BNRItemStore.h"
 #import "CrosshairView.h"
 #import "CustomPopoverBackgroundView.h"
+#import "ImageViewController.h"
 
 @interface DetailViewController ()
 
@@ -75,7 +76,13 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    // ScrollView
+    [scrollView setDelegate:self];
+    CGRect screenRect = [[UIScreen mainScreen] bounds];
+    [scrollView setContentSize:CGSizeMake(screenRect.size.width,
+                                          MAX(screenRect.size.width, screenRect.size.height) * 1)];
     
+
     [nameField setText:[item itemName]];
     [serialNumberField setText:[item serialNumber]];
     [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
@@ -103,7 +110,15 @@
     }
     
     [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
 }
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
+{
+    [[self view] endEditing:YES];
+}
+
+
 
 - (void)viewWillDisappear:(BOOL)animated
 {
@@ -131,15 +146,6 @@
     return YES;
 }
 
-- (IBAction)touchBackground:(id)sender
-{
-    /*
-    [nameField resignFirstResponder];
-    [serialNumberField resignFirstResponder];
-    [valueField resignFirstResponder];
-     */
-    [[self view] endEditing:YES];
-}
 
 - (IBAction)changeDate:(id)sender {
     DatePickerViewController *datePickerViewController = [[DatePickerViewController alloc] init];
@@ -218,6 +224,10 @@
 - (IBAction)removeImage:(id)sender {
     [[BNRImageStore sharedStore] deleteImageForKey:[item imageKey]];
     [imageView setImage:nil];
+    
+    // Purge cache data so that the thumbnail image won't appear after deleted
+    [item setThumbnail:nil];
+    [item setThumbnailData:nil];
 }
 
 - (IBAction)takeImageFromLibrary:(id)sender {
@@ -260,6 +270,16 @@
                          completion:nil];
     }
 
+}
+
+- (IBAction)showImage:(id)sender {
+    UIImage *img = [imageView image];
+    
+    if (!img)
+        return;
+    ImageViewController *ivc = [[ImageViewController alloc] init];
+    [ivc setImage:img];
+    [[self navigationController] pushViewController:ivc animated:YES];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker

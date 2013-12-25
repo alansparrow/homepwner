@@ -260,6 +260,16 @@ toProposedIndexPath:(NSIndexPath *)proposedDestinationIndexPath
                                       inView:[self view]
                     permittedArrowDirections:UIPopoverArrowDirectionAny
                                     animated:YES];
+    } else {
+        BNRItem *i = [[[BNRItemStore sharedStore] allItems] objectAtIndex:[ip row]];
+        NSString *imageKey = [i imageKey];
+        UIImage *img = [[BNRImageStore sharedStore] imageForKey:imageKey];
+        
+        if (!img)
+            return;
+        ImageViewController *ivc = [[ImageViewController alloc] init];
+        [ivc setImage:img];
+        [[self navigationController] pushViewController:ivc animated:YES];
     }
 }
 

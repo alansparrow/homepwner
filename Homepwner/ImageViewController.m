@@ -19,6 +19,7 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    [scrollView setDelegate:self];
     
     CGSize sz = [[self image] size];
     [scrollView setContentSize:CGSizeMake(sz.width, sz.height)];
@@ -27,6 +28,17 @@
     
     [imageView setImage:[self image]];
     
+    // Setup for zooming
+    [scrollView setMinimumZoomScale:0.5];
+    [scrollView setMaximumZoomScale:5.0];
+    [scrollView setZoomScale:0.5 animated:YES];
+    
+    
+}
+
+- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return imageView;
 }
 
 
