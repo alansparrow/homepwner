@@ -37,5 +37,6 @@
 - (void)loadAllItems;
 - (NSArray *)allAssetTypes;
 - (void)addNewAssetType:(NSString *)newAssetType;
+- (NSArray *)allItemsOfType:(NSString *)assetType;
 @end
 

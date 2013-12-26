@@ -11,6 +11,7 @@
 #import "BNRItem.h"
 #import "DetailViewController.h"
 #import "AssetTypeCreateViewController.h"
+#import "HomepwnerItemCell.h"
 
 @implementation AssetTypePicker
 
@@ -38,6 +39,22 @@
     return self;
 }
 
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    // Load the NIB file
+    UINib *nib = [UINib nibWithNibName:@"HomepwnerItemCell" bundle:nil];
+    
+    // Register this NIB which contains the cell
+    [[self tableView] registerNib:nib forCellReuseIdentifier:@"HomepwnerItemCell"];
+    
+    // Fix status bar problem with DetailView xib file
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+
+}
 - (void)addNewAssetType:(id)sender
 {
     AssetTypeCreateViewController *avc = [[AssetTypeCreateViewController alloc] init];
@@ -63,54 +80,84 @@
     return [self init];
 }
 
+
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [[[BNRItemStore sharedStore] allAssetTypes] count];
+    if (section == 0) {
+        return [[[BNRItemStore sharedStore] allAssetTypes] count];
+    } else {
+        NSString *assetType = [[item assetType] valueForKey:@"label"];
+        return [[[BNRItemStore sharedStore] allItemsOfType:assetType] count];
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell =
-    [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell"];
-    
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                      reuseIdentifier:@"UITableViewCell"];
-    }
-    NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
-    NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
-    
-    // Use key-value coding to get the asset type's label
-    // Because it is a NSManagedObject, we can use this
-    NSString *assetLabel = [assetType valueForKey:@"label"];
-    [[cell textLabel] setText:assetLabel];
-    
-    // Checkmark the one that is currently selected
-    if (assetType == [item assetType]) {
-        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+    if ([indexPath section] == 0) {
+        UITableViewCell *cell = [tableView
+                dequeueReusableCellWithIdentifier:@"UITableViewAssetCell"];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                          reuseIdentifier:@"UITableViewAssetCell"];
+        }
+        NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
+        NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
+        
+        // Use key-value coding to get the asset type's label
+        // Because it is a NSManagedObject, we can use this
+        NSString *assetLabel = [assetType valueForKey:@"label"];
+        [[cell textLabel] setText:assetLabel];
+        
+        // Checkmark the one that is currently selected
+        if (assetType == [item assetType]) {
+            [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        } else {
+            [cell setAccessoryType:UITableViewCellAccessoryNone];
+        }
+        return cell;
     } else {
-        [cell setAccessoryType:UITableViewCellAccessoryNone];
+        HomepwnerItemCell *cell = [tableView
+                                   dequeueReusableCellWithIdentifier:@"HomepwnerItemCell"];
+        
+        NSString *assetType = [[item assetType] valueForKey:@"label"];
+        NSArray *allItemsOfType = [[BNRItemStore sharedStore] allItemsOfType:assetType];
+        
+        BNRItem *p = [allItemsOfType objectAtIndex:[indexPath row]];
+        
+        [[cell nameLabel] setText:[p itemName]];
+        [[cell serialNumberLabel] setText:[p serialName]];
+        [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d",
+                                    [p valueInDollars]]];
+        if ([p valueInDollars] >= 50) {
+            [[cell valueLabel] setTextColor:[UIColor cyanColor]];
+        } else {
+            [[cell valueLabel] setTextColor:[UIColor redColor]];
+        }
+        
+        [[cell thumbnailView] setImage:[p thumbnail]];
+        return  cell;
     }
-    return cell;
 }
 
 - (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
-    
-    NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
-    NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
-    [item setAssetType:assetType];
-    
-    [[self navigationController] popViewControllerAnimated:YES];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"didChooseRowInPopover"
-                                                            object:self];
+    if ([indexPath section] == 0) {
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+        
+        NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
+        NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
+        [item setAssetType:assetType];
+        
+        [[self navigationController] popViewControllerAnimated:YES];
+        
+        if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad) {
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"didChooseRowInPopover"
+                                                                object:self];
+        }
     }
 }
 
@@ -118,23 +165,29 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ([indexPath row] != [[[BNRItemStore sharedStore] allItems] count]) {
-  
-        // If the table view is asking to commit a delete command...
-        if (editingStyle == UITableViewCellEditingStyleDelete)
-        {
-            NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
-            NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
-            NSString *typeName = [assetType valueForKey:@"label"];
+    if ([indexPath section] == 0) {
+        if ([indexPath row] != [[[BNRItemStore sharedStore] allItems] count]) {
             
-            [[BNRItemStore sharedStore] removeAssetType:typeName];
-            
-            // We also remove that row from the table view with an animation
-            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-                             withRowAnimation:UITableViewRowAnimationFade];
+            // If the table view is asking to commit a delete command...
+            if (editingStyle == UITableViewCellEditingStyleDelete)
+            {
+                NSArray *allAssets = [[BNRItemStore sharedStore] allAssetTypes];
+                NSManagedObject *assetType = [allAssets objectAtIndex:[indexPath row]];
+                NSString *typeName = [assetType valueForKey:@"label"];
+                
+                [[BNRItemStore sharedStore] removeAssetType:typeName];
+                
+                // We also remove that row from the table view with an animation
+                [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
+                                 withRowAnimation:UITableViewRowAnimationFade];
+            }
         }
     }
-    
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+{
+    return 2;
 }
 
 @end

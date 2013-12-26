@@ -104,7 +104,7 @@
 {
     NSFetchRequest *request = [[NSFetchRequest alloc] init];
     NSEntityDescription *e = [[model entitiesByName] objectForKey:@"BNRAssetType"];
-    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"label = %@",
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"label == %@",
                                       assetTypeName];
     [request setEntity:e];
     [request setPredicate:predicateTemplate];
@@ -255,6 +255,25 @@
                                          inManagedObjectContext:context];
     [type setValue:newAssetType forKey:@"label"];
     [allAssetTypes addObject:type];
+}
+
+- (NSArray *)allItemsOfType:(NSString *)assetType
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *e = [[model entitiesByName] objectForKey:@"BNRItem"];
+    NSPredicate *pre = [NSPredicate predicateWithFormat:@"assetType.label == %@",
+                         assetType];
+    [request setEntity:e];
+    [request setPredicate:pre];
+    
+    NSError *error;
+    NSArray *result = [context executeFetchRequest:request error:&error];
+    if (!result) {
+        [NSException raise:@"Fetch failed" format:@"Reason: %@",
+         [error localizedDescription]];
+    }
+    
+    return result;
 }
 
 @end
