@@ -27,7 +27,8 @@
 {
     [super viewWillAppear:animated];
     
-    [createdDatePicker setDate:[item dateCreated]];
+    [createdDatePicker
+     setDate:[NSDate dateWithTimeIntervalSinceReferenceDate:[item dateCreated]]];
     
     [warningLabel setText:@"This can be considered an insurance fraud!"];
     [warningLabel setTextColor:[UIColor redColor]];
@@ -42,7 +43,7 @@
     [[self view] endEditing:YES];
     
     // "Save" changed date to item
-    [item setDateCreated:[createdDatePicker date]];
+    [item setDateCreated: [[createdDatePicker date] timeIntervalSinceReferenceDate]];
 }
 
 - (void)setItem:(BNRItem *)i

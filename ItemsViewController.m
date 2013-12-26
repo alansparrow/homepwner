@@ -89,7 +89,7 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
                       objectAtIndex:[indexPath row]];
         // Configure the cell with the BNRItem
         [[cell nameLabel] setText:[p itemName]];
-        [[cell serialNumberLabel] setText:[p serialNumber]];
+        [[cell serialNumberLabel] setText:[p serialName]];
         
         // Color for $
         [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d",

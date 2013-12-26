@@ -14,6 +14,7 @@
 #import "CrosshairView.h"
 #import "CustomPopoverBackgroundView.h"
 #import "ImageViewController.h"
+#import "AssetTypePicker.h"
 
 @interface DetailViewController ()
 
@@ -84,16 +85,22 @@
     
 
     [nameField setText:[item itemName]];
-    [serialNumberField setText:[item serialNumber]];
+    [serialNumberField setText:[item serialName]];
     [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
-    // Create a NSDateFormatter that will turn a date into a simple date string
-    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-    [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
-    [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
+    NSString *typeLabel = [[item assetType] valueForKey:@"label"];
+    if (!typeLabel)
+        typeLabel = @"None";
     
-    // Use filtered NSDate object to set dateLabel contents
-    [dateLabel setText:[dateFormatter stringFromDate:[item dateCreated]]];
+    [assetTypeButton setTitle:[NSString stringWithFormat:@"Type: %@", typeLabel]
+                     forState:UIControlStateNormal];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"YYYY.mm.dd"];
+    NSDate *date = [NSDate dateWithTimeIntervalSinceReferenceDate:[item dateCreated]];
+    
+    [dateLabel setText: [df stringFromDate:date]];
+
     
     NSString *imageKey = [item imageKey];
     
@@ -129,7 +136,7 @@
     
     // "Save" changes to item
     [item setItemName:[nameField text]];
-    [item setSerialNumber:[serialNumberField text]];
+    [item setSerialName:[serialNumberField text]];
     [item setValueInDollars:[[valueField text] intValue]];
 }
 
@@ -147,14 +154,6 @@
 }
 
 
-- (IBAction)changeDate:(id)sender {
-    DatePickerViewController *datePickerViewController = [[DatePickerViewController alloc] init];
-    
-    [datePickerViewController setItem:[self item]];
-    
-    [[self navigationController] pushViewController:datePickerViewController
-                                           animated:YES];
-}
 
 - (IBAction)takePicture:(id)sender {
     // Prevent crash from clicking Camera while popover is till visible on iPad
@@ -280,6 +279,50 @@
     ImageViewController *ivc = [[ImageViewController alloc] init];
     [ivc setImage:img];
     [[self navigationController] pushViewController:ivc animated:YES];
+}
+
+- (IBAction)showAssetTypePicker:(id)sender {
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
+        [[self view] endEditing:YES];
+        
+        AssetTypePicker *assetTypePicker = [[AssetTypePicker alloc] init];
+        [assetTypePicker setItem:item];
+        
+        [[self navigationController] pushViewController:assetTypePicker
+                                               animated:YES];
+    } else {
+        AssetTypePicker *assetTypePicker = [[AssetTypePicker alloc] init];
+        CGRect rect = [[self view] convertRect:[sender bounds] fromView:sender];
+        [assetTypePicker setItem:item];
+        
+        
+        assetTypePickerPopover = [[UIPopoverController alloc]
+         initWithContentViewController:assetTypePicker];
+        [assetTypePickerPopover setDelegate:self];
+        [assetTypePickerPopover setPopoverContentSize:CGSizeMake(400, 400)];
+        
+        // NSNotificationCenter
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(didChooseRowInPopover:)
+                                                     name:@"didChooseRowInPopover"
+                                                   object:assetTypePicker];
+        
+        [assetTypePickerPopover presentPopoverFromRect:rect
+                                                inView:[self view]
+                              permittedArrowDirections:UIPopoverArrowDirectionAny
+                                              animated:YES];
+    }
+}
+
+- (void)didChooseRowInPopover:(NSNotification *)notification
+{
+    [assetTypePickerPopover dismissPopoverAnimated:YES];
+    NSString *typeLabel = [[item assetType] valueForKey:@"label"];
+    if (!typeLabel)
+        typeLabel = @"None";
+    
+    [assetTypeButton setTitle:[NSString stringWithFormat:@"Type: %@", typeLabel]
+                     forState:UIControlStateNormal];
 }
 
 - (void)imagePickerController:(UIImagePickerController *)picker
