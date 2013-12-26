@@ -100,6 +100,30 @@
     [allItems removeObjectIdenticalTo:p];
 }
 
+- (void)removeAssetType:(NSString *)assetTypeName
+{
+    NSFetchRequest *request = [[NSFetchRequest alloc] init];
+    NSEntityDescription *e = [[model entitiesByName] objectForKey:@"BNRAssetType"];
+    NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"label = %@",
+                                      assetTypeName];
+    [request setEntity:e];
+    [request setPredicate:predicateTemplate];
+    
+    NSError *error;
+    NSArray *result = [context executeFetchRequest:request error:&error];
+    if (!result) {
+        [NSException raise:@"Fetch failed" format:@"Reason %@",
+         [error localizedDescription]];
+    }
+    NSManagedObject *typeObject = [result objectAtIndex:0];
+    
+    // Remove it
+    [context deleteObject:typeObject];
+    NSLog(@"Num of types-bf: %d", [allAssetTypes count]);
+    [allAssetTypes removeObjectIdenticalTo:typeObject];
+    NSLog(@"Num of types-at: %d", [allAssetTypes count]);
+}
+
 - (void)moveItemAtIndex:(int)from toIndex:(int)to
 {
     if (from == to) {
@@ -214,23 +238,23 @@
     
     // Is this the first time the program is being run?
     if ([allAssetTypes count] == 0) {
-        NSManagedObject *type;
+        [self addNewAssetType:@"Furniture"];
+        [self addNewAssetType:@"Jewelry"];
+        [self addNewAssetType:@"Electronics"];
         
-        type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType"
-                                             inManagedObjectContext:context];
-        [type setValue:@"Furniture" forKey:@"label"];
-        [allAssetTypes addObject:type];
-        
-        type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType" inManagedObjectContext:context];
-        [type setValue:@"Jewelry" forKey:@"label"];
-        [allAssetTypes addObject:type];
-        
-        type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType" inManagedObjectContext:context];
-        [type setValue:@"Electronics" forKey:@"label"];
-        [allAssetTypes addObject:type];
     }
     
     return allAssetTypes;
+}
+
+- (void)addNewAssetType:(NSString *)newAssetType
+{
+    NSManagedObject *type;
+    
+    type = [NSEntityDescription insertNewObjectForEntityForName:@"BNRAssetType"
+                                         inManagedObjectContext:context];
+    [type setValue:newAssetType forKey:@"label"];
+    [allAssetTypes addObject:type];
 }
 
 @end

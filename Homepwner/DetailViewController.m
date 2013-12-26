@@ -88,6 +88,7 @@
     [serialNumberField setText:[item serialName]];
     [valueField setText:[NSString stringWithFormat:@"%d", [item valueInDollars]]];
     
+    // This is how to get data from NSManagedObject
     NSString *typeLabel = [[item assetType] valueForKey:@"label"];
     if (!typeLabel)
         typeLabel = @"None";

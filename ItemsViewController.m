@@ -59,6 +59,37 @@
     return self;
 }
 
+- (IBAction)addNewItem:(id)sender
+{
+    // Create a new BNRItem and add it to the store
+    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
+    
+    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
+    [detailViewController setItem:newItem];
+    
+    // Very very important, easy to not understand T.T
+    [detailViewController setDismissBlock:^{
+        [[self tableView] reloadData];
+    }];
+    
+    UINavigationController *navController = [[UINavigationController alloc]
+                                             initWithRootViewController:detailViewController];
+    
+    
+    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
+    //[navController setModalPresentationStyle:UIModalPresentationCurrentContext];
+    //[self setDefinesPresentationContext:YES];
+    
+    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
+        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    else
+        [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
+    
+    // Set modal view
+    [self presentViewController:navController
+                       animated:YES completion:nil];
+}
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
@@ -119,35 +150,6 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
     return cell;
 }
 
-- (IBAction)addNewItem:(id)sender
-{
-    // Create a new BNRItem and add it to the store
-    BNRItem *newItem = [[BNRItemStore sharedStore] createItem];
-    
-    DetailViewController *detailViewController = [[DetailViewController alloc] initForNewItem:YES];
-    [detailViewController setItem:newItem];
-    
-    [detailViewController setDismissBlock:^{
-        [[self tableView] reloadData];
-    }];
-    
-    UINavigationController *navController = [[UINavigationController alloc]
-                                             initWithRootViewController:detailViewController];
-    
-    
-    [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-    //[navController setModalPresentationStyle:UIModalPresentationCurrentContext];
-    //[self setDefinesPresentationContext:YES];
-    
-    if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad)
-        [navController setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
-    else
-        [navController setModalTransitionStyle:UIModalTransitionStyleCrossDissolve];
-    
-    // Set modal view
-    [self presentViewController:navController
-                       animated:YES completion:nil];
-}
 
 - (void)tableView:(UITableView *)tableView
 commitEditingStyle:(UITableViewCellEditingStyle)editingStyle

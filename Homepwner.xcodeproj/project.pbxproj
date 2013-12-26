@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D811D7ED186A9F9C006C9FA2 /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = D811D7EC186A9F9C006C9FA2 /* BNRItem.m */; };
 		D821BCD6186BBB980069969E /* AssetTypePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = D821BCD5186BBB980069969E /* AssetTypePicker.m */; };
+		D821BCDA186BE7080069969E /* AssetTypeCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D821BCD8186BE7080069969E /* AssetTypeCreateViewController.m */; };
+		D821BCDB186BE7080069969E /* AssetTypeCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D821BCD9186BE7080069969E /* AssetTypeCreateViewController.xib */; };
 		D832197A186A51B40016D559 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8321978186A51B40016D559 /* ImageViewController.m */; };
 		D832197B186A51B40016D559 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8321979186A51B40016D559 /* ImageViewController.xib */; };
 		D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */; };
@@ -55,6 +57,9 @@
 		D811D7EC186A9F9C006C9FA2 /* BNRItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BNRItem.m; path = ../BNRItem.m; sourceTree = "<group>"; };
 		D821BCD4186BBB980069969E /* AssetTypePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypePicker.h; sourceTree = "<group>"; };
 		D821BCD5186BBB980069969E /* AssetTypePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypePicker.m; sourceTree = "<group>"; };
+		D821BCD7186BE7080069969E /* AssetTypeCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AssetTypeCreateViewController.h; sourceTree = "<group>"; };
+		D821BCD8186BE7080069969E /* AssetTypeCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AssetTypeCreateViewController.m; sourceTree = "<group>"; };
+		D821BCD9186BE7080069969E /* AssetTypeCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AssetTypeCreateViewController.xib; sourceTree = "<group>"; };
 		D8321977186A51B40016D559 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		D8321978186A51B40016D559 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		D8321979186A51B40016D559 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
@@ -189,6 +194,9 @@
 				D8321979186A51B40016D559 /* ImageViewController.xib */,
 				D821BCD4186BBB980069969E /* AssetTypePicker.h */,
 				D821BCD5186BBB980069969E /* AssetTypePicker.m */,
+				D821BCD7186BE7080069969E /* AssetTypeCreateViewController.h */,
+				D821BCD8186BE7080069969E /* AssetTypeCreateViewController.m */,
+				D821BCD9186BE7080069969E /* AssetTypeCreateViewController.xib */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -307,6 +315,7 @@
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
 				D881542A1868E33400DC2894 /* arrow.png in Resources */,
+				D821BCDB186BE7080069969E /* AssetTypeCreateViewController.xib in Resources */,
 				D8815415186733CE00DC2894 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -331,6 +340,7 @@
 				D8E24901186519880083C0FD /* ItemsViewController.m in Sources */,
 				D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */,
 				D811D7ED186A9F9C006C9FA2 /* BNRItem.m in Sources */,
+				D821BCDA186BE7080069969E /* AssetTypeCreateViewController.m in Sources */,
 				D881541D1867833700DC2894 /* BNRImageStore.m in Sources */,
 				D832197A186A51B40016D559 /* ImageViewController.m in Sources */,
 				D8E248E11865169A0083C0FD /* HomepwnerAppDelegate.m in Sources */,
