@@ -41,7 +41,8 @@
     if (self) {
         UINavigationItem *n = [self navigationItem];
         
-        [n setTitle:@"Homepwner"];
+        // Internationalize
+        [n setTitle:NSLocalizedString(@"Homepwner", @"Name of application")];
         
         // Create a new bar button item that will send
         // addNewItem: to ItemsViewController
@@ -123,8 +124,9 @@ cellForRowAtIndexPath:(NSIndexPath *)indexPath
         [[cell serialNumberLabel] setText:[p serialName]];
         
         // Color for $
-        [[cell valueLabel] setText:[NSString stringWithFormat:@"$%d",
-                                     [p valueInDollars]]];
+        NSString *currencySymbol = [[NSLocale currentLocale] objectForKey:NSLocaleCurrencySymbol];
+        [[cell valueLabel] setText:[NSString stringWithFormat:@"%@%d", currencySymbol, [p valueInDollars]]];
+        
         if ([p valueInDollars] >= 50) {
             [[cell valueLabel] setTextColor:[UIColor cyanColor]];
         } else {

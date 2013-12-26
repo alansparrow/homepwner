@@ -400,4 +400,12 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info
                                                         completion:dismissBlock];
 }
 
+
+@end
+
+// Fix resign 1st responder for iPad
+@implementation UINavigationController (DelegateAutomaticDismissKeyboard)
+- (BOOL)disablesAutomaticKeyboardDismissal {
+    return [self.topViewController disablesAutomaticKeyboardDismissal];
+}
 @end

@@ -13,10 +13,14 @@
 		D821BCDB186BE7080069969E /* AssetTypeCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D821BCD9186BE7080069969E /* AssetTypeCreateViewController.xib */; };
 		D832197A186A51B40016D559 /* ImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8321978186A51B40016D559 /* ImageViewController.m */; };
 		D832197B186A51B40016D559 /* ImageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8321979186A51B40016D559 /* ImageViewController.xib */; };
+		D85EC1FB186CB933002F32DA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D85EC1EF186CABC7002F32DA /* DetailViewController.xib */; };
+		D85EC200186CC123002F32DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D85EC202186CC123002F32DA /* Localizable.strings */; };
+		D85EC212186CC737002F32DA /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D85EC20C186CC737002F32DA /* DetailViewController.xib */; };
+		D85EC213186CC737002F32DA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D85EC20E186CC737002F32DA /* InfoPlist.strings */; };
+		D85EC214186CC737002F32DA /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D85EC210186CC737002F32DA /* Localizable.strings */; };
 		D87B252C1869CE9300696EB4 /* HomepwnerItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */; };
 		D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */; };
 		D8815414186733CE00DC2894 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D8815412186733CE00DC2894 /* DetailViewController.m */; };
-		D8815415186733CE00DC2894 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D8815413186733CE00DC2894 /* DetailViewController.xib */; };
 		D881541918675B9B00DC2894 /* DatePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541718675B9B00DC2894 /* DatePickerViewController.m */; };
 		D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D881541818675B9B00DC2894 /* DatePickerViewController.xib */; };
 		D881541D1867833700DC2894 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = D881541C1867833700DC2894 /* BNRImageStore.m */; };
@@ -63,12 +67,34 @@
 		D8321977186A51B40016D559 /* ImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageViewController.h; sourceTree = "<group>"; };
 		D8321978186A51B40016D559 /* ImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageViewController.m; sourceTree = "<group>"; };
 		D8321979186A51B40016D559 /* ImageViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageViewController.xib; sourceTree = "<group>"; };
+		D85EC1EE186CABC7002F32DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC1F0186CAC98002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = file; name = es; path = es.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC1F1186CAC98002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC1F2186CAC98002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC201186CC123002F32DA /* en */ = {isa = PBXFileReference; lastKnownFileType = file; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC203186CC126002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = file; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC204186CC514002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = file; name = ko; path = ko.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC205186CC515002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = file; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC206186CC515002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC207186CC515002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC208186CC51B002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = file; name = vi; path = vi.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC209186CC51B002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = file; name = vi; path = vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC20A186CC51B002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC20B186CC51B002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC20D186CC737002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = es; path = Homepwner/es.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC20F186CC737002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Homepwner/es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC211186CC737002F32DA /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Homepwner/es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC215186CC746002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = vi; path = Homepwner/vi.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC216186CC746002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = Homepwner/vi.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC217186CC746002F32DA /* vi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = vi; path = Homepwner/vi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		D85EC218186CC753002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = ko; path = Homepwner/ko.lproj/DetailViewController.xib; sourceTree = "<group>"; };
+		D85EC219186CC753002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Homepwner/ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D85EC21A186CC753002F32DA /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = Homepwner/ko.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D87B252A1869CE9200696EB4 /* HomepwnerItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomepwnerItemCell.h; sourceTree = "<group>"; };
 		D87B252B1869CE9200696EB4 /* HomepwnerItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomepwnerItemCell.m; sourceTree = "<group>"; };
 		D87B252D1869CF1900696EB4 /* HomepwnerItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomepwnerItemCell.xib; sourceTree = "<group>"; };
 		D8815411186733CE00DC2894 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		D8815412186733CE00DC2894 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
-		D8815413186733CE00DC2894 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 		D881541618675B9B00DC2894 /* DatePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DatePickerViewController.h; sourceTree = "<group>"; };
 		D881541718675B9B00DC2894 /* DatePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DatePickerViewController.m; sourceTree = "<group>"; };
 		D881541818675B9B00DC2894 /* DatePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DatePickerViewController.xib; sourceTree = "<group>"; };
@@ -132,6 +158,9 @@
 		D8E248C41865169A0083C0FD = {
 			isa = PBXGroup;
 			children = (
+				D85EC20C186CC737002F32DA /* DetailViewController.xib */,
+				D85EC20E186CC737002F32DA /* InfoPlist.strings */,
+				D85EC210186CC737002F32DA /* Localizable.strings */,
 				D8B471DA186A968B00E9942E /* Homepwner.xcdatamodeld */,
 				D8E248D61865169A0083C0FD /* Homepwner */,
 				D8E248EF1865169B0083C0FD /* HomepwnerTests */,
@@ -170,7 +199,7 @@
 				D8E248E01865169A0083C0FD /* HomepwnerAppDelegate.m */,
 				D8815411186733CE00DC2894 /* DetailViewController.h */,
 				D8815412186733CE00DC2894 /* DetailViewController.m */,
-				D8815413186733CE00DC2894 /* DetailViewController.xib */,
+				D85EC1EF186CABC7002F32DA /* DetailViewController.xib */,
 				D881541618675B9B00DC2894 /* DatePickerViewController.h */,
 				D881541718675B9B00DC2894 /* DatePickerViewController.m */,
 				D881541818675B9B00DC2894 /* DatePickerViewController.xib */,
@@ -197,6 +226,7 @@
 				D821BCD7186BE7080069969E /* AssetTypeCreateViewController.h */,
 				D821BCD8186BE7080069969E /* AssetTypeCreateViewController.m */,
 				D821BCD9186BE7080069969E /* AssetTypeCreateViewController.xib */,
+				D85EC202186CC123002F32DA /* Localizable.strings */,
 				D8E248E21865169A0083C0FD /* Images.xcassets */,
 				D8E248D71865169A0083C0FD /* Supporting Files */,
 			);
@@ -291,6 +321,9 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
+				ko,
+				vi,
 			);
 			mainGroup = D8E248C41865169A0083C0FD;
 			productRefGroup = D8E248CE1865169A0083C0FD /* Products */;
@@ -308,15 +341,19 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D85EC212186CC737002F32DA /* DetailViewController.xib in Resources */,
+				D85EC213186CC737002F32DA /* InfoPlist.strings in Resources */,
+				D85EC214186CC737002F32DA /* Localizable.strings in Resources */,
+				D85EC1FB186CB933002F32DA /* DetailViewController.xib in Resources */,
 				D881541A18675B9B00DC2894 /* DatePickerViewController.xib in Resources */,
 				D87B252E1869CF1900696EB4 /* HomepwnerItemCell.xib in Resources */,
 				D832197B186A51B40016D559 /* ImageViewController.xib in Resources */,
 				D881542B1868E33400DC2894 /* border.png in Resources */,
+				D85EC200186CC123002F32DA /* Localizable.strings in Resources */,
 				D8E248DB1865169A0083C0FD /* InfoPlist.strings in Resources */,
 				D8E248E31865169A0083C0FD /* Images.xcassets in Resources */,
 				D881542A1868E33400DC2894 /* arrow.png in Resources */,
 				D821BCDB186BE7080069969E /* AssetTypeCreateViewController.xib in Resources */,
-				D8815415186733CE00DC2894 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -372,10 +409,65 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		D85EC1EF186CABC7002F32DA /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D85EC1EE186CABC7002F32DA /* en */,
+				D85EC1F0186CAC98002F32DA /* es */,
+				D85EC204186CC514002F32DA /* ko */,
+				D85EC208186CC51B002F32DA /* vi */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		D85EC202186CC123002F32DA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D85EC201186CC123002F32DA /* en */,
+				D85EC203186CC126002F32DA /* es */,
+				D85EC205186CC515002F32DA /* ko */,
+				D85EC209186CC51B002F32DA /* vi */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		D85EC20C186CC737002F32DA /* DetailViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D85EC20D186CC737002F32DA /* es */,
+				D85EC215186CC746002F32DA /* vi */,
+				D85EC218186CC753002F32DA /* ko */,
+			);
+			name = DetailViewController.xib;
+			sourceTree = "<group>";
+		};
+		D85EC20E186CC737002F32DA /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D85EC20F186CC737002F32DA /* es */,
+				D85EC216186CC746002F32DA /* vi */,
+				D85EC219186CC753002F32DA /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D85EC210186CC737002F32DA /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D85EC211186CC737002F32DA /* es */,
+				D85EC217186CC746002F32DA /* vi */,
+				D85EC21A186CC753002F32DA /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		D8E248D91865169A0083C0FD /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				D8E248DA1865169A0083C0FD /* en */,
+				D85EC1F1186CAC98002F32DA /* es */,
+				D85EC206186CC515002F32DA /* ko */,
+				D85EC20A186CC51B002F32DA /* vi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -384,6 +476,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				D8E248F31865169B0083C0FD /* en */,
+				D85EC1F2186CAC98002F32DA /* es */,
+				D85EC207186CC515002F32DA /* ko */,
+				D85EC20B186CC51B002F32DA /* vi */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
